@@ -1,5 +1,6 @@
 package com.masai.sainath.writenotesapp;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.masai.sainath.writenotesapp.Activity.MainActivity;
+import com.masai.sainath.writenotesapp.Activity.UpdateNoteActivity;
 
 import java.util.List;
 
@@ -37,14 +39,30 @@ public class NotesAdapter  extends RecyclerView.Adapter<NotesAdapter.NotesViewHo
         holder.title.setText(note.notesTitle);
         holder.subtitle.setText(note.notesSubTitle);
         holder.notesData.setText(note.notesDate);
-        if  (note.notesPriority.equals("1")){
-            holder.notesPriority.setBackgroundResource(R.drawable.greenshape);
+        switch (note.notesPriority) {
+            case "1":
+                holder.notesPriority.setBackgroundResource(R.drawable.greenshape);
 
-        }else if (note.notesPriority.equals("2")){
-            holder.notesPriority.setBackgroundResource(R.drawable.yelloeshape);
-        }else if(note.notesPriority.equals("3")){
-            holder.notesPriority.setBackgroundResource(R.drawable.redshape);
+                break;
+            case "2":
+                holder.notesPriority.setBackgroundResource(R.drawable.yelloeshape);
+                break;
+            case "3":
+                holder.notesPriority.setBackgroundResource(R.drawable.redshape);
+                break;
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mainActivity, UpdateNoteActivity.class);
+                intent.putExtra("id",note.id );
+                intent.putExtra("title",note.notesTitle);
+                intent.putExtra("subtitle",note.notesSubTitle);
+                intent.putExtra("priority",note.notesPriority);
+                intent.putExtra("notes",note.notes);
+                mainActivity.startActivity(intent);
+            }
+        });
     }
 
     @Override

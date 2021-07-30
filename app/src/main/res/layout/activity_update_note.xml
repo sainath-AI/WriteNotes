@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/updateTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -25,6 +26,7 @@
 
             />
         <EditText
+            android:id="@+id/updateSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -59,24 +61,27 @@
                 />
 
             <ImageView
+                android:id="@+id/updategreen"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/greenshape"
+                android:src="@drawable/ic_baseline_done_24"
+                android:background="@drawable/greenshape"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 />
             <ImageView
+                android:id="@+id/updateyellow"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:background="@drawable/yelloeshape"
-                android:src="@drawable/ic_baseline_done_24"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 />
             <ImageView
+                android:id="@+id/updatered"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/redshape"
+                android:background="@drawable/redshape"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 />
@@ -87,6 +92,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/updateNotes"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginStart="16dp"

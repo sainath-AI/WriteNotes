@@ -77,7 +77,7 @@ public class InsertNotesActivity extends AppCompatActivity {
     private void CreateNotes(String title, String subtitle, String notes) {
 
         Date date= new Date();
-        CharSequence sequence= DateFormat.format("MMMM d YYYY",date.getTime());
+        CharSequence sequence= DateFormat.format("MMMM d yyyy",date.getTime());
 
 
         Notes notes1=new Notes();
