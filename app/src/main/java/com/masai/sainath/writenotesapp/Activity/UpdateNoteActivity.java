@@ -45,9 +45,15 @@ public class UpdateNoteActivity extends AppCompatActivity {
         binding.updateSubtitle.setText(sSubtitle);
         binding.updateNotes.setText(sNotes);
 
+        switch (sPriority){
+            case "1":  binding.updategreen.setImageResource(R.drawable.ic_baseline_done_24);
+            break;
+            case "2":  binding.updateyellow.setImageResource(R.drawable.ic_baseline_done_24);
+            break;
+            case "3":  binding.updatered.setImageResource(R.drawable.ic_baseline_done_24);
+            break;
 
-
-
+        }
 
 
         binding.updategreen.setOnClickListener(new View.OnClickListener() {
