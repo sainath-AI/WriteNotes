@@ -1,13 +1,20 @@
 package com.masai.sainath.writenotesapp.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.masai.sainath.writenotesapp.NOtesViewModel;
 import com.masai.sainath.writenotesapp.Notes;
 import com.masai.sainath.writenotesapp.R;
@@ -118,5 +125,41 @@ public class UpdateNoteActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.deletemenu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.id_delete){
+            BottomSheetDialog sheetDialog=new BottomSheetDialog(UpdateNoteActivity.this,R.style.BottoSheetStyle);
+            View view= LayoutInflater.from(UpdateNoteActivity.this)
+                    .inflate(R.layout.bottomsheet,(LinearLayout) findViewById(R.id.mainLinearlayout));
+            sheetDialog.setContentView(view);
+
+            TextView yes,no;
+            yes=view.findViewById(R.id.yes);
+            no=view.findViewById(R.id.no);
+            yes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    nOtesViewModel.deleteNote(iid);
+                    finish();
+                }
+            });
+            no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sheetDialog.dismiss();
+                }
+            });
+            sheetDialog.show();
+
+
+        }
+        return true;
+    }
 
 }

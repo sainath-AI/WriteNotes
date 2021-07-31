@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">WriteNotesApp</string>
+    <string name="app_name">Write Notes</string>
     <string name="priority">Priority</string>
     <string name="done">done</string>
+    <string name="no_filter">No filter</string>
+    <string name="high_to_low">High to Low</string>
+    <string name="low_to_high">Low to High</string>
 </resources>

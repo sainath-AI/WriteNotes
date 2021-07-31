@@ -7,7 +7,69 @@
     android:background="#E8E8E8"
     tools:context=".Activity.MainActivity">
 
+    <LinearLayout
+        android:id="@+id/layoutfilter"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/filter"
+            android:layout_margin="10dp"
+            />
+        <TextView
+            android:id="@+id/noFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:layout_marginStart="15dp"
+            android:textSize="17sp"
+            android:fontFamily="@font/sans_regular"
+            android:textColor="@color/black"
+            android:background="@drawable/fiiltershape"
+            android:layout_gravity="center_vertical"
+            android:text="@string/no_filter"
+            />
+        <TextView
+            android:id="@+id/hightolow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/low_to_high"
+            android:padding="7dp"
+            android:layout_marginStart="15dp"
+            android:textSize="17sp"
+            android:fontFamily="@font/sans_regular"
+            android:textColor="@color/black"
+            android:background="@drawable/fiiltershape"
+
+            />
+        <TextView
+            android:id="@+id/lowtohigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/high_to_low"
+            android:padding="7dp"
+            android:layout_marginStart="15dp"
+            android:textSize="17sp"
+            android:fontFamily="@font/sans_regular"
+            android:textColor="@color/black"
+            android:background="@drawable/fiiltershape"
+
+            />
+
+
+
+
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/layoutfilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerview"

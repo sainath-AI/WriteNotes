@@ -15,6 +15,12 @@ public interface NotesDataAccessObject {
     @Query("SELECT * FROM Notes_DataBase")
     LiveData<List<Notes>> getAllNotes();
 
+    @Query("SELECT * FROM Notes_DataBase ORDER BY notes_priority DESC")
+    LiveData<List<Notes>> HighToLow();
+
+    @Query("SELECT * FROM Notes_DataBase ORDER BY notes_priority ASC ")
+    LiveData<List<Notes>> LowToHigh();
+
     //List<Notes> getALlNotes();
 
     @Insert

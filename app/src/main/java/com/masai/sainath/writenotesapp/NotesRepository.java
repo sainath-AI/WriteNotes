@@ -12,10 +12,16 @@ public class NotesRepository {
     public  NotesDataAccessObject notesDataAccessObject;
     public LiveData<List<Notes>> getALlNotes;
 
-     public  NotesRepository(Application application){
+    public LiveData<List<Notes>> HIghToLow;
+    public LiveData<List<Notes>> LowToHigh;
+
+
+    public  NotesRepository(Application application){
          NotesDatabase database= NotesDatabase.getDatabaseInstances(application);
          notesDataAccessObject=database.notesDataAccessObject();
          getALlNotes=notesDataAccessObject.getAllNotes();
+         HIghToLow=notesDataAccessObject.HighToLow();
+         LowToHigh=notesDataAccessObject.LowToHigh();
      }
 
     public void  insertNotes(Notes notes){
