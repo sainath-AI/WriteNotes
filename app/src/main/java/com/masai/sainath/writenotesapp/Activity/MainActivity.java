@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,6 +22,7 @@ import com.masai.sainath.writenotesapp.Notes;
 import com.masai.sainath.writenotesapp.NotesAdapter;
 import com.masai.sainath.writenotesapp.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
     TextView nofilter,highttolow,lowtohigh;
+    List<Notes> FilterNotesAllList;
 
 
     @Override
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         highttolow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loadData(1);
                 highttolow.setBackgroundResource(R.drawable.selectfilershape);
                 lowtohigh.setBackgroundResource(R.drawable.fiiltershape);
                 nofilter.setBackgroundResource(R.drawable.fiiltershape);
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         lowtohigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loadData(2);
                 highttolow.setBackgroundResource(R.drawable.fiiltershape);
                 lowtohigh.setBackgroundResource(R.drawable.selectfilershape);
                 nofilter.setBackgroundResource(R.drawable.fiiltershape);
@@ -84,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Notes> notes) {
                 setAdapter(notes);
+                FilterNotesAllList=notes;
+
             }
         });
     }
@@ -94,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(List<Notes> notes) {
                     setAdapter(notes);
+                    FilterNotesAllList=notes;
+
                 }
             });
         }else if (i==1){
@@ -101,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(List<Notes> notes) {
                     setAdapter(notes);
+                    FilterNotesAllList=notes;
+
                 }
             });
         }else if (i==2){
@@ -108,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(List<Notes> notes) {
                     setAdapter(notes);
+                    FilterNotesAllList=notes;
+
                 }
             });
         }
@@ -118,12 +134,41 @@ public class MainActivity extends AppCompatActivity {
           notesAdapter=new NotesAdapter(MainActivity.this,notes);
             recyclerView.setAdapter(notesAdapter);
     }
-//        nOtesViewModel.getALlNotes.observe(this,notes ->{
-//            recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-//           notesAdapter=new NotesAdapter(MainActivity.this,notes);
-//            recyclerView.setAdapter(notesAdapter);
-//        });
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_notes,menu);
+        MenuItem menuItem=menu.findItem(R.id.app_bar_search);
 
+        SearchView searchView= (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("search notes here...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+              NotesFilter(newText);
+
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void NotesFilter(String newText) {
+
+        ArrayList<Notes> FilterName=new ArrayList<>();
+        for (Notes notes: this.FilterNotesAllList){
+            if (notes.notesTitle.contains(newText)
+                    ||notes.notesSubTitle.contains(newText )){
+                FilterName.add(notes);
+            }
+        }
+        this.notesAdapter.search(FilterName);
+
+    }
 }

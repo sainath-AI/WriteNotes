@@ -34,7 +34,7 @@
             android:text="@string/no_filter"
             />
         <TextView
-            android:id="@+id/hightolow"
+            android:id="@+id/lowtohigh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -48,7 +48,7 @@
 
             />
         <TextView
-            android:id="@+id/lowtohigh"
+            android:id="@+id/hightolow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

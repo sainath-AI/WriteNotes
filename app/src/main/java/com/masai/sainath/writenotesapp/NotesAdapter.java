@@ -12,15 +12,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.masai.sainath.writenotesapp.Activity.MainActivity;
 import com.masai.sainath.writenotesapp.Activity.UpdateNoteActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotesAdapter  extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder>{
 
     MainActivity mainActivity;
     List<Notes> notes;
+    List<Notes> searchNotes;
+
     public NotesAdapter(MainActivity mainActivity, List<Notes> notes) {
         this.mainActivity=mainActivity;
         this.notes=notes;
+        searchNotes=new ArrayList<>(notes);
+    }
+
+    public  void search(List<Notes> searchName){
+        this.notes=searchName;
+        notifyDataSetChanged();
     }
 
     @NonNull
