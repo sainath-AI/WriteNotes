@@ -27,9 +27,9 @@
         android:layout_marginBottom="7dp"
         android:fontFamily="@font/sans_regular"
         android:gravity="center"
-        android:text="By\n Sainath Reddy"
-        android:textColor="@color/green"
-        android:textSize="20dp"
+        android:text="By\n Masai student"
+        android:textColor="@color/red"
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sans_italic"
         android:gravity="center"
-        android:text="take notes everyday in your \n Notes App "
+        android:text="Plan in Digital  \n spend time in digital before jumping to Analog”"
         android:textColor="@color/red"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView"
